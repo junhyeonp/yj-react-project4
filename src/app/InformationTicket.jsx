@@ -1,10 +1,11 @@
+import InformationTicketTab1 from "../components/InformationTicketTab1";
 import Layout from "../components/Layout";
 import LayoutContents from "../components/LayoutContents";
 import LayoutTab from "../components/LayoutTab";
 import SubTitle from "../components/SubTitle";
 
 const tabLists = [
-  { title: "first", children: "first element" },
+  { title: "예매안내", children: <InformationTicketTab1 /> },
   { title: "second", children: "second element" },
   { title: "third", children: "third element" },
   { title: "third", children: "third element" },
