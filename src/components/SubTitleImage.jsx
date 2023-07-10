@@ -5,7 +5,7 @@ export default function SubTitleImage() {
         <div>
           <img
             src="http://www.daeguoperahouse.org/images/contents/img_logo_white.png"
-            alt="image title"
+            alt="title"
           />
         </div>
 
