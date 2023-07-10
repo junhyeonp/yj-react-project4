@@ -1,17 +1,23 @@
 import Layout from "../components/Layout";
+import LayoutContents from "../components/LayoutContents";
+import LayoutTab from "../components/LayoutTab";
 import SubTitle from "../components/SubTitle";
 
-export default function InformationTicket({ width = "max-w-7xl" }) {
+const tabLists = [
+  { title: "first", children: "first element" },
+  { title: "second", children: "second element" },
+  { title: "third", children: "third element" },
+  { title: "third", children: "third element" },
+];
+
+export default function InformationTicket() {
   return (
     <Layout>
       <SubTitle firstTitle="공연안내" secondTitle="티켓정보" />
-      <section className="w-full flex justify-center py-16">
-        <div className={`w-full flex flex-col ${width} bg-red-500`}>
-          <div className="w-full space-y-16">
-            <h1 className="text-4xl py-2 flex justify-center">티켓정보</h1>
-          </div>
-        </div>
-      </section>
+      <LayoutContents title="티켓정보">
+        {/* 탭 레이아웃 */}
+        <LayoutTab tabLists={tabLists} numbers="grid-cols-4" />
+      </LayoutContents>
     </Layout>
   );
 }
