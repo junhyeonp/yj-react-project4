@@ -33,7 +33,7 @@ export default function SignUp() {
       transform: "translate(-50%, -50%)",
     },
   };
-
+  // 커밋
   console.log(watch("password"));
   return (
     <Layout>
