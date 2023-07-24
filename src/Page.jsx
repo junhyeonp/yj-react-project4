@@ -123,7 +123,7 @@ export default function Page() {
               <TitleTwoRow main="소셜네트워크" sub="social-network" />
               <div className="w-full grid grid-cols-2 gap-4">
                 {/* 1번째 자식 */}
-                <div className="">
+                <div>
                   <div className="w-full cursor-pointer aspect-video relative">
                     <img
                       src="https://images.unsplash.com/photo-1543906965-f9520aa2ed8a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
@@ -139,7 +139,7 @@ export default function Page() {
                   </div>
                 </div>
                 {/* 2번째 자식 */}
-                <div className="">
+                <div>
                   <div className="w-full cursor-pointer aspect-video relative">
                     <img
                       src="https://images.unsplash.com/photo-1603093508539-d71ca3312106?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
