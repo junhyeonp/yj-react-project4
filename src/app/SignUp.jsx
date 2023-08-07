@@ -9,7 +9,7 @@ export default function SignUp() {
   const [modalIsOpen, setIsOpen] = useState(false);
   const {
     register,
-    handleSubmit,
+    //handleSubmit,
     watch,
     formState: { errors },
   } = useForm({ mode: "onChange" });
