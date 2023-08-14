@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import LogoAsset from "./asset/LogoAsset";
 import SearchAsset from "./asset/SearchAsset";
+import useUser from "../hooks/useUser";
 
 const GNB = [
   { mainTitle: "공연안내", subTitle: "Performance", link: "./information" },
@@ -11,6 +12,8 @@ const GNB = [
   { mainTitle: "대구엑스포", subTitle: "Contact", link: "./contact" },
 ];
 export default function Header() {
+  const {userLoading, isLoggedIn, user} = useUser();
+  console.log(userLoading, isLoggedIn, user);
   return (
     <div className="w-full flex justify-center h-header-height shadow-md">
       {/* 좌우 여백을 위한 박스 */}
@@ -37,10 +40,22 @@ export default function Header() {
               <SearchAsset />
             </div>
             <div>Home</div>
-            <div>Login</div>
-            <Link to="/signup">
+            {isLoggedIn === "true" ? (
+              <>
+                <div>{user.email}</div>
+                <div>logout</div>
+              </>
+            ):(
+              <>
+              <Link to="/signin">
+              <div>Login</div>
+              </Link>
+              <Link to="/signup">
               <div>Join</div>
-            </Link>
+              </Link>
+              </>
+            )}
+           
             <select
               size="sm"
               className="border border-neutral-300 text-sm rounded-sm px-2 py-1"

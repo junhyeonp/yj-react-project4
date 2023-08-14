@@ -4,13 +4,21 @@ import Layout from "../components/Layout";
 import LayoutContents from "../components/LayoutContents";
 import { useForm } from "react-hook-form";
 import Modal from "react-modal";
+import DaumPostcodeEmbed from 'react-daum-postcode';
+import {useMutation} from "react-query";
+import { userRegister } from "../api";
+import { useNavigate } from "react-router-dom";
 
 export default function SignUp() {
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [zipcode, setZipCode] = useState("");
+  const [addressDetail, setAddressDetail] = useState("");
+  const navigate = useNavigate();
   const {
     register,
-    //handleSubmit,
+    handleSubmit,
     watch,
+    reset,
     formState: { errors },
   } = useForm({ mode: "onChange" });
 
@@ -24,7 +32,7 @@ export default function SignUp() {
 
   const customStyles = {
     content: {
-      widht: "600px",
+      width: "600px",
       top: "50%",
       left: "50%",
       right: "auto",
@@ -33,6 +41,25 @@ export default function SignUp() {
       transform: "translate(-50%, -50%)",
     },
   };
+
+  const handleComplete = (data) => {
+    setIsOpen(false);
+    setZipCode(data.zonecode);
+    setAddressDetail(data.address);
+  };
+
+  const onSubmit = data => {
+    console.log(data);
+    mutate(data);
+  }
+
+  // POST: useMutation / GET: useQeury 사용
+  const {mutate} = useMutation(userRegister, {
+    onSuccess: () => {
+      reset();
+      navigate("/");
+    }
+  });
   // 커밋
   console.log(watch("password"));
   return (
@@ -41,9 +68,16 @@ export default function SignUp() {
         isOpen={modalIsOpen}
         style={customStyles}
         onRequestClose={closeModal}
-      ></Modal>
+      >
+       <DaumPostcodeEmbed onComplete={handleComplete}/>
+       <div className="flex justify-center">
+        <button onClick={closeModal} className="border border-neutral-300 px-4 py-1 rounded-md hover:text-neutral-700 hover:border-neutral-700">
+          close
+        </button>
+        </div>
+      </Modal>
       <LayoutContents>
-        <form>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <table className="table_top w-full">
             <tbody>
               <tr>
@@ -139,6 +173,7 @@ export default function SignUp() {
                   <div className="space-x-1">
                     <input
                       {...register("zipcode")}
+                      value={zipcode}
                       disabled
                       type="text"
                       className="border border-neutral-300 py-2 bg-neutral-50"
@@ -153,6 +188,7 @@ export default function SignUp() {
                   </div>
                   <input
                     {...register("address1")}
+                    value={addressDetail}
                     disabled
                     type="text"
                     className="w-full border border-neutral-300 py-2 bg-neutral-50"
