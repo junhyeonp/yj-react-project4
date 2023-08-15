@@ -1,18 +1,18 @@
-import { Link } from "react-router-dom";
-import LogoAsset from "./asset/LogoAsset";
-import SearchAsset from "./asset/SearchAsset";
-import useUser from "../hooks/useUser";
+import { Link } from 'react-router-dom';
+import LogoAsset from './asset/LogoAsset';
+import SearchAsset from './asset/SearchAsset';
+import useUser from '../hooks/useUser';
 
 const GNB = [
-  { mainTitle: "공연안내", subTitle: "Performance", link: "./information" },
-  { mainTitle: "공연 대관안내", subTitle: "Rental", link: "./rental" },
-  { mainTitle: "멤버쉽", subTitle: "Membership", link: "./membership" },
-  { mainTitle: "아카데미", subTitle: "Academy", link: "./academy" },
-  { mainTitle: "커뮤니티", subTitle: "Community", link: "./community" },
-  { mainTitle: "대구엑스포", subTitle: "Contact", link: "./contact" },
+  { mainTitle: '공연안내', subTitle: 'Performance', link: './information' },
+  { mainTitle: '공연 대관안내', subTitle: 'Rental', link: './rental' },
+  { mainTitle: '멤버쉽', subTitle: 'Membership', link: './membership' },
+  { mainTitle: '아카데미', subTitle: 'Academy', link: './academy' },
+  { mainTitle: '커뮤니티', subTitle: 'Community', link: './community' },
+  { mainTitle: '대구엑스포', subTitle: 'Contact', link: './contact' },
 ];
 export default function Header() {
-  const {userLoading, isLoggedIn, user} = useUser();
+  const { userLoading, isLoggedIn, user } = useUser();
   console.log(userLoading, isLoggedIn, user);
   return (
     <div className="w-full flex justify-center h-header-height shadow-md">
@@ -23,7 +23,7 @@ export default function Header() {
           <div className="w-full flex justify-center items-center space-x-8">
             {GNB.map(({ mainTitle, subTitle, link }) => (
               <Link key={mainTitle} to={link}>
-                <div div className="flex flex-col justify-center">
+                <div className="flex flex-col justify-center">
                   <h1 className="text-lg font-semibold">{mainTitle}</h1>
                   <p className="uppercase text-sm font-light">{subTitle}</p>
                 </div>
@@ -40,22 +40,22 @@ export default function Header() {
               <SearchAsset />
             </div>
             <div>Home</div>
-            {isLoggedIn === "true" ? (
+            {isLoggedIn === 'true' ? (
               <>
                 <div>{user.email}</div>
                 <div>logout</div>
               </>
-            ):(
+            ) : (
               <>
-              <Link to="/signin">
-              <div>Login</div>
-              </Link>
-              <Link to="/signup">
-              <div>Join</div>
-              </Link>
+                <Link to="/signin">
+                  <div>Login</div>
+                </Link>
+                <Link to="/signup">
+                  <div>Join</div>
+                </Link>
               </>
             )}
-           
+
             <select
               size="sm"
               className="border border-neutral-300 text-sm rounded-sm px-2 py-1"

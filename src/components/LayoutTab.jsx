@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 export default function LayoutTab({ tabLists, numbers }) {
   const [openTab, setOpenTab] = useState(1);
@@ -21,8 +21,8 @@ export default function LayoutTab({ tabLists, numbers }) {
                   }}
                   className={`px-5 py-4 block text-neutral-400 ${
                     openTab === i + 1
-                      ? "shadow-xl outline-black text-black"
-                      : ""
+                      ? 'shadow-xl outline-black text-black'
+                      : ''
                   }`}
                 >
                   {title}
@@ -39,7 +39,7 @@ export default function LayoutTab({ tabLists, numbers }) {
                 {tabLists.map(({ children }, i) => (
                   <div
                     key={i}
-                    className={openTab === i + 1 ? "block" : "hidden"}
+                    className={openTab === i + 1 ? 'block' : 'hidden'}
                   >
                     {children}
                   </div>
